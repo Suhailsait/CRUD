@@ -67,15 +67,12 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    console.log(this.signupForm);
-
     const { username, email, phoneno, password } = this.signupForm.value;
-
     if (this.signupForm.valid) {
       this.ds.signup(username, email, phoneno, password).subscribe(
-        (result: any) => {
+        (result: any) => {          
           if (result) {
-            alert(result);
+            alert(result.message);
             this.router.navigateByUrl('');
           }
         },

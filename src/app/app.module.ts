@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifyuserComponent } from './verifyuser/verifyuser.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { VerifyuserComponent } from './verifyuser/verifyuser.component';
     LoginComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-    VerifyuserComponent
+    VerifyuserComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

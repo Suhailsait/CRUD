@@ -3,7 +3,15 @@
     background-size: cover;
     display: flex;
     align-items: center;
+    flex-direction: column;
     height:100vh;
+    padding-top: 150px;
+    .alert{
+      background-color: rgb(100, 110, 152);
+      padding: 10px 40px;
+      margin-left: 850px;
+      border-radius: 5px;
+    }
   form {
     width: 400px;
     background-color: rgba(255, 255, 255, 0.183);

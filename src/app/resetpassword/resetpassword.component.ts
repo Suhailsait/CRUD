@@ -57,26 +57,24 @@ export class ResetpasswordComponent implements OnInit {
   }
 
   reset() {
-    console.log(this.resetForm.value)
-    const token = this.resetForm.value;
-    const password = this.resetForm.value;
+    const token = this.resetForm.value.token;
+    const password = this.resetForm.value.password;
     if (this.resetForm.valid) {
       this.ds.reset(token, password).subscribe(
         (result: any) => {
+          console.log(result);
+          
           if (result) {
             alert(result.message);
             this.router.navigateByUrl('');
           }
         },
         (result) => {
-          alert(result.error.message);
-          console.log(result.error.message);
-          
+          alert(result.error.message);          
         }
       );
     } else {
       alert('Invalid Password');
-
     }
   }
 }

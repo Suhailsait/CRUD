@@ -9,6 +9,9 @@ import { UserserviceService } from '../services/userservice.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
+  message:any
+
   loginForm = this.fb.group({
     email: [
       '',
@@ -38,7 +41,7 @@ export class LoginComponent implements OnInit {
             // localStorage.setItem('currentUser', result.currentUser)
             // localStorage.setItem('currentUid', result.currentUid)
             // localStorage.setItem('token', result.token)
-
+            // this.message= result.message
             alert(result.message)
             this.router.navigateByUrl('dashboard')
           }

@@ -41,17 +41,18 @@ export class UserserviceService {
 
   //reset
   reset(token: any, password: any) {
-    const data = {
-      token,
+   const data={
       password
     };
-    return this.http.post('http://localhost:3000/reset-password',data);
+   
+    return this.http.post('http://localhost:3000/reset-password',data,{params:{token:token}}
+    );
     }
 
   //verify
   verify(token: any) {
     
-    return this.http.get(
+    return this.http.post(
       'http://localhost:3000/verify-user',{params:{token:token}}
       );
     }
