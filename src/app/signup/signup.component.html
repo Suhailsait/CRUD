@@ -1,0 +1,108 @@
+<div class="main">
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <h3>Register</h3>
+
+    <input
+      type="text"
+      class="form-control"
+      name="username"
+      formControlName="username"
+      placeholder="Username"
+      required
+    />
+    <div
+      *ngIf="
+        signupForm.get('username')?.hasError('required') &&
+        signupForm.get('username')?.touched
+      "
+    class="error">
+      Username is required
+    </div>
+
+    <input
+      type="text"
+      class="form-control"
+      name="email"
+      formControlName="email"
+      placeholder="Email"
+      required
+    />
+    <div
+      *ngIf="
+        signupForm.get('email')?.hasError('required') &&
+        signupForm.get('email')?.touched
+      "
+      class="error">
+      Email is required
+    </div>
+    <div
+      *ngIf="
+        signupForm.get('email')?.hasError('email') &&
+        signupForm.get('email')?.hasError
+      "
+      class="error">
+      Invalid email address
+    </div>
+
+    <input
+      type="number"
+      class="form-control"
+      name="phoneno"
+      formControlName="phoneno"
+      placeholder="Phone Number"
+      required
+    />
+    <div
+      *ngIf="
+        signupForm.get('phoneno')?.hasError('required') &&
+        signupForm.get('phoneno')?.touched
+      "
+      class="error">
+      Phone Number Required
+    </div>
+
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      formControlName="password"
+      placeholder="Password"
+      required
+    />
+    <div
+      *ngIf="
+        signupForm.get('password')?.hasError('required') &&
+        signupForm.get('password')?.touched
+      "
+      class="error">
+      Password is required
+    </div>
+
+    <input
+      type="password"
+      class="form-control"
+      name="confirmpassword"
+      formControlName="confirmpassword"
+      placeholder="Confirm Password"
+      required
+    />
+    <div
+      *ngIf="
+        signupForm.get('confirmpassword')?.hasError('required') &&
+        signupForm.get('confirmpassword')?.touched
+      "
+    class="error">
+      Confirm Password is required
+    </div>
+
+    <div *ngIf="signupForm.get('confirmpassword')?.hasError('mismatch')" class="error">
+      Passwords do not match
+    </div>
+
+    <button type="submit" class="signup_btn">
+      Register
+    </button>
+
+    <p>Already Have Account?<a routerLink="">Login</a></p>
+  </form>
+</div>

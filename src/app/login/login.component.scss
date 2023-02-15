@@ -1,0 +1,78 @@
+.main {
+    background-image: url("../../assets/images/login.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    height:100vh;
+  form {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.183);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    margin-left: 850px;
+    text-align: center;
+    h3 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+    }
+    input {
+      display: block;
+      height: 50px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.07);
+      border-radius: 3px;
+      padding: 0 10px;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    ::placeholder {
+      color: #e5e5e5;
+    }
+    .login_btn {
+      margin-top: 40px;
+      width: 100%;
+      background-color: #ffffff85;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login_btn:hover{
+      background-color:#9f9bbd ;
+
+    }
+    .forgot{
+      margin-top: 20px;
+      letter-spacing: 1.5px;
+    }
+   
+    .signup{
+      margin-top: 20px;
+      letter-spacing: 1.5px;
+      a{
+        text-decoration: none;
+        color: #080710;
+        font-weight: 700;
+      }
+    }
+    .error{
+      color: red;
+    }
+  }
+  form * {
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+  }
+}
+  
+  
