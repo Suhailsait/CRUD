@@ -15,6 +15,7 @@ import { UserserviceService } from '../services/userservice.service';
 })
 export class ResetpasswordComponent implements OnInit {
 
+  token:any
   resetForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -25,7 +26,6 @@ export class ResetpasswordComponent implements OnInit {
   ) {
     this.resetForm = this.fb.group(
       {
-        token:this.rout.snapshot.queryParamMap.get('useToken'),
         password: new FormControl('', [
           Validators.required,
           Validators.pattern('[a-zA-Z0-9]*'),
@@ -36,7 +36,9 @@ export class ResetpasswordComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {   
+    this.token=this.rout.snapshot.queryParamMap.get('useToken')
+ 
   }
   MustMatch(password: any, confirmpassword: any) {
     return (formGroup: FormGroup) => {
@@ -57,7 +59,7 @@ export class ResetpasswordComponent implements OnInit {
   }
 
   reset() {
-    const token = this.resetForm.value.token;
+    const token = this.token;
     const password = this.resetForm.value.password;
     if (this.resetForm.valid) {
       this.ds.reset(token, password).subscribe(

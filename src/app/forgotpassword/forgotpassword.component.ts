@@ -36,8 +36,8 @@ export class ForgotpasswordComponent implements OnInit {
       this.ds.forgot(email)
         .subscribe((result: any) => {
           if (result) {
-
             alert(result.message)
+            this.router.navigateByUrl('')
           }
         },
         result => {

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const options = {
@@ -10,7 +10,6 @@ const options = {
 })
 export class UserserviceService {
   constructor(private http: HttpClient) {}
-
 
   //signup
   signup(username: any, email: any, phoneno: any, password: any) {
@@ -41,24 +40,24 @@ export class UserserviceService {
 
   //reset
   reset(token: any, password: any) {
-   const data={
-      password
+    const data = {
+      password,
     };
-   
-    return this.http.post('http://localhost:3000/reset-password',data,{params:{token:token}}
-    );
-    }
 
-  //verify
-  verify(token: any) {
-    
-    return this.http.post(
-      'http://localhost:3000/verify-user',{params:{token:token}}
-      );
-    }
-
-
+    return this.http.post('http://localhost:3000/reset-password', data, {
+      params: { token: token },
+    });
   }
 
+  //verify
+  verify(email: any, otp: any) {
+    const data = {
+      email,
+      otp
+    };
 
-  // {params:{token:token}}
+    return this.http.post('http://localhost:3000/verify-user', data);
+  }
+}
+
+// {params:{token:token}}

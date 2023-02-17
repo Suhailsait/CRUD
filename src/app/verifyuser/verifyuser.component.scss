@@ -4,10 +4,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   gap: 30px;
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   h1{
     color: white;
+  }
+  input {
+    height: 50px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  ::placeholder {
+    color: #e5e5e5;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .error{
+    color: red;
   }
   .verify_btn {
     width: 300px;
@@ -19,4 +44,5 @@
     border-radius: 5px;
     cursor: pointer;
   }
+}
 }

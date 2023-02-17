@@ -1,9 +1,28 @@
 <div class="main">
 
-    <h1>Verify your Account Here</h1>
-
-    <button type="submit" class="verify_btn" (click)="verify()">
-        Verify
-      </button>
-
+  
+  <form [formGroup]="verifyForm" (ngSubmit)="verify()">
+    <h1>Enter Your OTP</h1>
+    
+    <input
+    type="number"
+    class="form-control"
+      name="otp"
+      formControlName="otp"
+      placeholder="Enter your OTP"
+      required
+      />
+      <div
+      *ngIf="
+      verifyForm.get('otp')?.hasError('required') &&
+      verifyForm.get('otp')?.touched
+      "
+      class="error"
+      >
+      OTP Required
+    </div>
+    
+    
+    <button type="submit" class="verify_btn" >Verify</button>
+  </form>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserserviceService } from '../services/userservice.service';
 
@@ -9,19 +10,26 @@ import { UserserviceService } from '../services/userservice.service';
 })
 export class VerifyuserComponent implements OnInit {
 
-  token:any;
+  email:any;
 
+  verifyForm = this.fb.group({
+    otp: ['', [Validators.required, Validators.pattern('[0-9]*')]]
+  })
 
-  constructor(private ds: UserserviceService,
+  constructor(private fb: FormBuilder,
+    private ds: UserserviceService,
     private router: Router,
-    private rout: ActivatedRoute) { }
+    private rout: ActivatedRoute) { 
+      
+     }
 
   ngOnInit(): void {
-    this.token = this.rout.snapshot.queryParamMap.get('useToken');
+    this.email = this.rout.snapshot.queryParamMap.get('email');
   }
 
   verify(){
-    this.ds.verify(this.token).subscribe(
+   const otp = this.verifyForm.value
+    this.ds.verify(this.email,otp).subscribe(
       (result: any) => {
         if (result) {
           alert(result.message);
