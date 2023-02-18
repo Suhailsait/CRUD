@@ -35,7 +35,10 @@ export class UserserviceService {
 
   //forgot
   forgot(email: any) {
-    return this.http.post('http://localhost:3000/forget-password', email);
+    const data={
+      email
+    }
+    return this.http.post('http://localhost:3000/forget-password',data );
   }
 
   //reset
@@ -50,13 +53,19 @@ export class UserserviceService {
   }
 
   //verify
-  verify(email: any, otp: any) {
-    const data = {
-      email,
-      otp
-    };
+  verify(id: any, otp: any) {
+  
+    return this.http.post('http://localhost:3000/verify-user', otp, {params: { id: id }}
+    );
+  }
 
-    return this.http.post('http://localhost:3000/verify-user', data);
+  //resendotp
+  resendotp(email: any) {
+   const data={
+    email,
+    }
+    return this.http.post('http://localhost:3000/resend-otp',data, {params: { email: email }}
+    );
   }
 }
 

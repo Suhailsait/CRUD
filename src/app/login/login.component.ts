@@ -10,7 +10,7 @@ import { UserserviceService } from '../services/userservice.service';
 })
 export class LoginComponent implements OnInit {
 
-  message:any
+  message: any
 
   loginForm = this.fb.group({
     email: [
@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private ds: UserserviceService,
-    private router: Router) {}
+    private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   login() {
 
-    const { email,password } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
     if (this.loginForm.valid) {
       //asynchronous
       this.ds.login(email, password)
@@ -43,17 +43,22 @@ export class LoginComponent implements OnInit {
             // localStorage.setItem('token', result.token)
             // this.message= result.message
             alert(result.message)
+
             this.router.navigateByUrl('dashboard')
           }
         },
           result => {
             alert(result.error.message)
+            if (!result.error.data.verified) {
+              this.router.navigate(['/verify'], { queryParams: { id: result.error.data._id, email: result.error.data.email } });
+            }
+
           }
         )
     }
     else {
       alert("Invalid form")
     }
-    
-}
+
+  }
 }

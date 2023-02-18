@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
             alert(result.message);
             console.log(result);
             
-            this.router.navigate(['/verify'],{queryParams:{email:email}});
+            this.router.navigate(['/verify'],{queryParams:{id:result.data._id,email:result.data.email}});
           }
         },
         (result) => {

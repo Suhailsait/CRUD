@@ -45,4 +45,14 @@
     cursor: pointer;
   }
 }
+.resend_btn{
+  padding:5px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #080710;
+  background-color: #ffffffc0;
+}
+.resend_btn:hover{
+  background-color: #9a8888c0;
+}
 }

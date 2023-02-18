@@ -10,7 +10,8 @@ import { UserserviceService } from '../services/userservice.service';
 })
 export class VerifyuserComponent implements OnInit {
 
-  email:any;
+  id:any;
+  email:any
 
   verifyForm = this.fb.group({
     otp: ['', [Validators.required, Validators.pattern('[0-9]*')]]
@@ -24,12 +25,14 @@ export class VerifyuserComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.id = this.rout.snapshot.queryParamMap.get('id');
     this.email = this.rout.snapshot.queryParamMap.get('email');
   }
 
   verify(){
    const otp = this.verifyForm.value
-    this.ds.verify(this.email,otp).subscribe(
+   if (this.verifyForm.valid) {
+    this.ds.verify(this.id,otp).subscribe(
       (result: any) => {
         if (result) {
           alert(result.message);
@@ -39,9 +42,26 @@ export class VerifyuserComponent implements OnInit {
       (result) => {
         alert(result.error.message);
         console.log(result.error.message);
-        
+      }
+    );
+   } else {
+    alert("Invalid Form")
+   }
+  
+  }
+
+  resend(){    
+    this.ds.resendotp(this.email).subscribe(
+      (result: any) => {     
+        if (result) {
+          console.log(result);
+          alert(result.message);
+        }
+      },
+      (result) => {
+        alert(result.error.message);
+        console.log(result.error.message);
       }
     );
   }
-
 }
